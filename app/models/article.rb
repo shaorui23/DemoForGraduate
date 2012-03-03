@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+
   def articles
     b = $redis.smembers("article#{self.id}")
     Article.where :id => b
