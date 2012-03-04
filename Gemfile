@@ -12,6 +12,7 @@ gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'mongrel'
 
 gem 'redis'
+gem 'redis-objects'
 
 
 

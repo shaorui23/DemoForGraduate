@@ -15,3 +15,4 @@
 /tmp
 /spec/tmp/*
 .rspec
+*.swp
