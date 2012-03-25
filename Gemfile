@@ -6,8 +6,10 @@ gem 'faker'
 gem 'soulmate'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
+#
+gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'mysql2', :git => 'git://github.com/brianmario/mysql2.git'
 
-gem 'sqlite3'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'mongrel'
 

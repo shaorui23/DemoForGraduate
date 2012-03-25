@@ -18,6 +18,11 @@ RailsAdmin.config do |config|
   
   # Set the admin name here (optional second array element will appear in a beautiful RailsAdmin red ©)
   config.main_app_name = ['Redis数据库管理', 'Web']
+  config.models do
+    fields_of_type :datetime do
+      strftime_format "%Y-%m-%d"
+    end
+  end
   # or for a dynamic name:
   # config.main_app_name = Proc.new { |controller| [Rails.application.engine_name.titleize, controller.params['action'].titleize] }
 
@@ -52,6 +57,59 @@ RailsAdmin.config do |config|
   #     end
   #   end
   # end
+ #config.model Team do
+ #  edit do
+ #    team = Team.find(params[:id]) 
+ #    team.on_base << "show"
+ #  end
+ #end
+ #
+  config.model Article do
+    list do
+      field :title
+      field :content
+      field :created_at do
+        strftime_format "%Y-%m"
+      end
+    end
+  end
+
+  config.model Team do
+    #object_label_method :on_base
+    #label "Fuck your team"
+
+    create do
+      field :redis_on_base do
+        label "Redis Object - OnBase"
+      end
+      field :redis_outfielders
+    end
+
+    show do
+      field :id
+      field :redis_on_base do
+        label "On Base"
+      end
+      field :redis_outfielders do
+        label "OutFielders"
+      end
+    end
+
+    edit do
+      field :redis_on_base
+      field :redis_outfielders
+    end
+
+    list do
+      field :id
+      field :redis_on_base do
+        label "On Base"
+      end
+      field :redis_outfielders do
+        label "OutFielders"
+      end
+    end
+  end
   #
   #  ==> Model specific configuration
   # Keep in mind that *all* configuration blocks are optional.
