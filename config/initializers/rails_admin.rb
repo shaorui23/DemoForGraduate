@@ -74,6 +74,44 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model RedisString do
+    export do 
+      field :name
+      field :redis_key
+      field :redis_value
+    end
+    list do
+      field :id
+      field :name
+      field :redis_key do
+        label "key"
+      end
+      field :redis_value do
+        label "value"
+      end
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :name
+      field :redis_key do
+        label "key"
+      end
+      field :redis_value do
+        label "value"
+      end
+    end
+
+    edit do
+      field :id
+      field :name
+      field :value do
+        label "value"
+      end
+    end
+  end
+
   config.model Team do
     #object_label_method :on_base
     #label "Fuck your team"
