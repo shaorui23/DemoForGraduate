@@ -57,13 +57,6 @@ RailsAdmin.config do |config|
   #     end
   #   end
   # end
- #config.model Team do
- #  edit do
- #    team = Team.find(params[:id]) 
- #    team.on_base << "show"
- #  end
- #end
- #
   config.model Article do
     list do
       field :title
@@ -75,11 +68,13 @@ RailsAdmin.config do |config|
   end
 
   config.model RedisString do
+    navigation_label "-Redis String-"
     export do 
       field :name
       field :redis_key
       field :redis_value
     end
+
     list do
       field :id
       field :name
@@ -108,6 +103,53 @@ RailsAdmin.config do |config|
       field :name
       field :value do
         label "value"
+      end
+    end
+  end
+  config.model RedisList do
+    navigation_label "-Redis List-"
+    export do 
+      field :name
+      field :redis_key
+      field :redis_value
+    end
+
+    list do
+      field :id
+      field :name
+      field :redis_key do
+        label "key"
+      end
+      field :redis_value do
+        label "value"
+      end
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :name
+      field :redis_key do
+        label "key"
+      end
+      field :redis_value do
+        label "value"
+        pretty_value do
+          v = []
+          bindings[:object].redis_value.split(",").each_with_index do |rv, index|
+            v.push "Index #{index} : #{rv}\n"
+          end
+          v.join("")
+        end
+      end
+    end
+
+    edit do
+      field :id
+      field :name
+      field :value do
+        label "value"
+        #partial "list_value"
       end
     end
   end
