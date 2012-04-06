@@ -76,15 +76,21 @@ RailsAdmin.config do |config|
     end
 
     list do
-      field :id
+      field :id do
+        searchable false
+      end
       field :name
       field :redis_key do
+        searchable :redis_key
         label "key"
       end
       field :redis_value do
+        searchable :redis_value
         label "value"
       end
-      field :created_at
+      field :created_at do
+        searchable false
+      end
     end
 
     show do
@@ -137,7 +143,7 @@ RailsAdmin.config do |config|
         pretty_value do
           v = []
           bindings[:object].redis_value.split(",").each_with_index do |rv, index|
-            v.push "Index #{index} : #{rv}\n"
+            v.push "#{index+1}. #{rv}\n"
           end
           v.join("")
         end

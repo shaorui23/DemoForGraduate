@@ -10,7 +10,8 @@ gem 'soulmate'
 gem 'ruby-debug19', :require => 'ruby-debug'
 gem 'mysql2', :git => 'git://github.com/brianmario/mysql2.git'
 
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+#gem 'rails_admin', :git => 'git@github.com:shaorui23/rails_admin.git'
+gem 'rails_admin', :path => "/Users/weric/app/rails_admin"
 gem 'mongrel'
 
 gem 'redis'
